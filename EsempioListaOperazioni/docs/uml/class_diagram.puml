@@ -20,7 +20,7 @@ skinparam {
 hide circle
 ' END STYLE
 
-title EsempioOperazioni - Class Diagram
+title Esempio Lista Operazioni - Class Diagram
 
 class Main
 hide Main members
