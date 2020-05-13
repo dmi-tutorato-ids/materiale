@@ -20,7 +20,7 @@ Questo è un semplice esempio per riepilogare:
 
 Questo è un esempio di diagramma delle classi generato con PlantUML a partire dal file [*docs/uml/class_diagram.puml*](docs/uml/class_diagram.puml)
 
-![Diagramma delle Classi](/docs/uml/class_diagram.png)
+![Diagramma delle Classi](docs/uml/class_diagram.png)
 
 ## Compilare i sorgenti da riga di comando
 
