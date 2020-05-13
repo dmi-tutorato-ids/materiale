@@ -1,0 +1,71 @@
+' PlantUML: tool per la generazione di UML (.png) in modo testuale
+' supporta diversi diagrammi UML 
+' (es. diagramma delle classi, di sequenza...)
+' esempio file class_diagram.wsd per generare UML a destra
+' download (jar): http://plantuml.com/download
+' documentazione: http://plantuml.com/class-diagram
+' estensione per VS Code (PlantUML): https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+' (premi ALT-D per aprire la preview in VS Code)
+@startuml
+' START STYLE
+skinparam {
+	'monochrome true
+	'shadowing false
+	'classBackgroundColor white
+	'noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype polyline
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+title EsempioOperazioni - Class Diagram
+
+class Main
+hide Main members
+
+class TestListaOperazioni {
+	- lsop: ListaOperazioni
+	- testLeggiFile(): void
+	- testInserisciSum(): void
+	- testInserisciMul(): void
+	- testInserisciSconosciuto(): void
+	- testCalcolaSommaTotale(): void
+	+ {static} main(args: String[]): void
+}
+
+abstract class Operazione {
+	# valori: List 
+	# parsaOperandi(): void
+	+ {abstract} calcolaRisultato(): float
+}
+
+class Somma {
+	+ calcolaRisultato(): float
+}
+
+class Moltiplicazione {
+	+ calcolaRisultato(): float
+}
+
+class ListaOperazioni {
+	- listaOperazioni: List
+	+ leggiFile(): void
+	+ inserisci(riga: String): void
+	+ calcolaTotale(): float
+	+ svuota(): void
+}
+
+' definisco le relazioni
+Operazione <|-down- Somma
+Operazione <|-down- Moltiplicazione
+Main -right-> ListaOperazioni
+TestListaOperazioni -right-> ListaOperazioni
+ListaOperazioni o-right- Operazione
+
+' per correggere il posizionamento
+' posso aggiungere degli archi nascosti
+Main -[hidden]-> TestListaOperazioni
+
+@enduml
