@@ -18,7 +18,7 @@ Questo è un semplice esempio per riepilogare:
 
 - scaricando un'[estensione per vscode](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
 
-Questo è un esempio di diagramma delle classi generato con PlantUML a partire dal file [*docs/uml/class_diagram.puml*](docs/uml/class_diagram.puml)
+Questo è un esempio di diagramma delle classi generato con PlantUML a partire dal file [*docs/uml/class_diagram.puml*](docs/uml/class_diagram.puml):
 
 ![Diagramma delle Classi](docs/uml/class_diagram.png)
 
@@ -32,7 +32,7 @@ javac src/* -d bin
 
 ## Eseguire il main e i test da riga di comando
 
-L'opzione *"-cp"* serve ad indicare il classpath, ovvero dove cercare i class file (nella cartella bin, in questo caso)
+L'opzione *"-cp"* serve ad indicare il classpath, ovvero dove cercare i class file (nella cartella bin, in questo caso):
 
 ```bash
 java -cp bin Main
@@ -51,9 +51,8 @@ OK testCalcolaSommaTotale
 
 ## Generare la javadoc da riga di comando
 
-L'opzione *-d* serve ad indicare la directory in cui generare la javadoc.
+L'opzione *-d* serve ad indicare la directory in cui generare la javadoc:
 
 ```bash
 javadoc src/* -d docs/site
 ```
-
