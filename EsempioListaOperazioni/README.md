@@ -56,3 +56,5 @@ L'opzione *-d* serve ad indicare la directory in cui generare la javadoc:
 ```bash
 javadoc src/* -d docs/site
 ```
+
+Per un esempio sulle annotazioni per la javadoc vedi [qui](src/Operazione.java).
