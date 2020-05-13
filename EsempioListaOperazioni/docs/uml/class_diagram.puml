@@ -36,7 +36,7 @@ class TestListaOperazioni {
 }
 
 abstract class Operazione {
-	# valori: List 
+	# valori: List<Float>
 	# parsaOperandi(): void
 	+ {abstract} calcolaRisultato(): float
 }
@@ -50,7 +50,7 @@ class Moltiplicazione {
 }
 
 class ListaOperazioni {
-	- listaOperazioni: List
+	- listaOperazioni: List<Operazione>
 	+ leggiFile(): void
 	+ inserisci(riga: String): void
 	+ calcolaTotale(): float
