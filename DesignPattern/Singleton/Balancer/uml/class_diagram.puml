@@ -1,0 +1,38 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+title Singleton: Balancer - Class Diagram
+
+class TestBalancer {
+	+ {static} main()
+}
+
+note left of TestBalancer::main
+  Balancer b = Balancer.getInstance();
+  b.getHost();
+end note
+
+class Balancer {
+	- hosts: String[]
+	- x: int
+	- {static} b: Balancer
+	
+	- Balancer()
+	+ {static} getInstance(): Balancer
+	+ getHost(): String
+}
+
+TestBalancer -right-> Balancer
+
+@enduml
