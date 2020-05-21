@@ -1,0 +1,41 @@
+' Documentazione: https://plantuml.com/class-diagram
+  
+@startuml
+' START STYLE
+skinparam {
+    monochrome true
+    'shadowing false
+    classBackgroundColor white
+    noteBackgroundColor white
+    classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+title Factory Method: Armeria
+
+hide members
+
+class TestArmeria
+class Armeria
+
+interface Arma <<interface>>
+class Fucile implements Arma
+class Pistola implements Arma
+
+interface Munizioni <<interface>>
+class MunizioniPesanti implements Munizioni
+class MunizioniLeggere implements Munizioni
+
+TestArmeria --> Armeria
+TestArmeria --> Arma
+
+Fucile --> Munizioni
+Pistola --> Munizioni
+
+Armeria --> Fucile
+Armeria --> Pistola
+Armeria --> MunizioniPesanti
+Armeria --> MunizioniLeggere
+
+@enduml
