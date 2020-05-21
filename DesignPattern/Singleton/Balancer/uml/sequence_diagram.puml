@@ -4,30 +4,42 @@
 ' START STYLE
 skinparam {
 	monochrome true
-	shadowing false
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
 }
 hide footbox
 ' END STYLE
 
 title Singleton: Balancer - Sequence Diagram
 
-activate "tb:TestBuilder"
-"tb:TestBuilder" -> "b:Builder": getInstance()
-activate "b:Builder"
+' Aggiungo delle etichette
+participant "tb:TestBalancer" as tb
+participant ":Balancer" as BB
+participant "b:Balancer" as b
 
-A -> B: << createRequest >>
-activate B
+' attivo il main
+activate tb
 
-B -> C: DoWork
-activate C
-C --> B: WorkDone
-destroy C
+' chiamata a Balancer.getInstance()
+tb -> BB: getInstance()
+activate BB
 
-B --> A: RequestCreated
-deactivate B
+' chiamata al costruttore se b == null
+alt b == null
+	BB -> b ** : new
+end
 
-A -> User: Done
-deactivate A
+' return b (instance)
+BB --> tb: b
+deactivate BB
+
+' chiamo b.getHost()
+tb -> b: getHost()
+activate b
+b --> tb: host
+deactivate b
 
 
 @enduml
