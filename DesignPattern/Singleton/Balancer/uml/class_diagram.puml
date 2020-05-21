@@ -4,7 +4,7 @@
 ' START STYLE
 skinparam {
 	monochrome true
-	shadowing false
+	'shadowing false
 	classBackgroundColor white
 	noteBackgroundColor white
 	classAttributeIconSize 0

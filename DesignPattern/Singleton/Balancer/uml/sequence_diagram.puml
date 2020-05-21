@@ -1,0 +1,33 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	shadowing false
+}
+hide footbox
+' END STYLE
+
+title Singleton: Balancer - Sequence Diagram
+
+activate "tb:TestBuilder"
+"tb:TestBuilder" -> "b:Builder": getInstance()
+activate "b:Builder"
+
+A -> B: << createRequest >>
+activate B
+
+B -> C: DoWork
+activate C
+C --> B: WorkDone
+destroy C
+
+B --> A: RequestCreated
+deactivate B
+
+A -> User: Done
+deactivate A
+
+
+@enduml
