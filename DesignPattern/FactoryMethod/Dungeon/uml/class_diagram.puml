@@ -1,0 +1,66 @@
+' Documentazione: https://plantuml.com/class-diagram
+  
+@startuml
+' START STYLE
+skinparam {
+    monochrome true
+    'shadowing false
+    classBackgroundColor white
+    noteBackgroundColor white
+    classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+title Factory Method: Welcome to the Dungeon
+
+hide members
+
+'class TestPartita
+class Partita
+
+abstract class Dungeon <<abstract>> {
+    - livello: int
+    + esplora()
+    # {abstract} getNemico(tipo)
+}
+show Dungeon members
+
+class Bosco extends Dungeon {
+     # {abstract} getNemico(tipo)
+}
+show Bosco members
+
+class Vulcano extends Dungeon {
+     # {abstract} getNemico(tipo)
+}
+show Vulcano members
+
+interface Nemico <<interface>> {
+    + getNome(): String
+    + applicaDanno(danno: int)
+    + isSconfitto(): boolean
+}
+show Nemico members
+
+class Goblin implements Nemico
+class Orco implements Nemico
+class Drago implements Nemico
+
+Dungeon --> Nemico
+
+'TestPartita --> Bosco
+'TestPartita --> Vulcano
+'TestPartita -right-> Partita 
+
+Partita -right-> Dungeon
+Partita --> Nemico
+
+Bosco --> Goblin
+Bosco --> Orco
+
+Vulcano --> Goblin
+Vulcano --> Orco
+Vulcano --> Drago
+
+@enduml
