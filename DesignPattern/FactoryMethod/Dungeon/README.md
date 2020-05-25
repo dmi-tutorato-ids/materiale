@@ -2,7 +2,7 @@
 
 Supponiamo di dover sviluppare un gioco in cui il giocatore può affrontare dei dungeon popolati da diverse tipologie di nemici (es. goblin, orchi, draghi). 
 
-Durante ogni partita, il giocatore può decidere che tipo di dungeon affrontare (es. Bosco, Vulcano).
+Durante ogni partita, il giocatore può decidere che tipo di dungeon affrontare (es. Bosco, Vulcano) e il numero di attacchi a sua disposizione per superare tutti i livelli di cui è composto (ogni attacco infligge un numero casuale di danni tra 1 e 10).
 
 Tutti i dungeon, a prescindere dal tipo, sono composti da 4 livelli da esplorare, in ognuno dei quali è presente un nemico da sconfiggere di una determinata categoria: 
 
@@ -27,7 +27,7 @@ Dungeon Vulcano:
 Ogni nemico regisce in maniera diversa ai danni:
 
 - Goblin: 5 punti ferita iniziali, ogni danno inflitto vale doppio;
-- Orco: punti ferita 10;
+- Orco: 10 punti ferita iniziali;
 - Drago: ucciso solo con un colpo da almeno 10 danni.
 
 Nota: in futuro deve essere possibile aggiungere facilmente nuovi tipi di dungeon e nuovi tipi di nemici.
