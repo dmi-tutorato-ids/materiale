@@ -1,4 +1,4 @@
-# Factory Method - variante con Dependence Injection: Armeria
+# Factory Method - variante con Dependency Injection: Armeria
 
 Supponiamo di dover sviluppare un gioco FPS in cui il giocatore può interagire con un'armeria per recuperare l'arma con cui iniziare la partita.
 
