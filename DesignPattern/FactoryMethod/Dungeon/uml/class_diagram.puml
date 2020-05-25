@@ -21,10 +21,14 @@ class Partita
 
 abstract class Dungeon <<abstract>> {
     - livello: int
-    + esplora()
+    + esplora(): Nemico
     # {abstract} getNemico(tipo)
 }
 show Dungeon members
+
+note right of Dungeon::esplora
+  next = getNemico(tipo);
+end note
 
 class Bosco extends Dungeon {
      # {abstract} getNemico(tipo)
