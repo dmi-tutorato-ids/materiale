@@ -64,4 +64,5 @@ Vittoria
 - Infliggo 2 danni a: Drago
 - Infliggo 1 danni a: Drago
 - Infliggo 8 danni a: Drago
+Sconfitta
 ```
