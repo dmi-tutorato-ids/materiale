@@ -1,0 +1,42 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+title Adapter: variante Class Adapter
+
+class TestGoblin
+hide TestGoblin members
+
+note left of GoblinAdapter::tiraFreccia
+  this.scagliaPezzoDiLegno(danno * 10)
+end note
+
+interface Goblin <<interface>> {
+	+ tiraFreccia(danno: float): void	
+}
+
+class GoblinAdapter implements Goblin {
+	+ tiraFreccia(danno: float): void
+}
+
+class PelleVerde {
+	+ scagliaPezzoDiLegno(danno: int): void
+}
+
+TestGoblin -right-> Goblin
+TestGoblin -right-> GoblinAdapter
+GoblinAdapter -up-|> PelleVerde
+
+Goblin -[hidden]right-> PelleVerde
+
+@enduml

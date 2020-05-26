@@ -1,0 +1,38 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+title Adapter: variante Object Adapter
+
+' Aggiungo delle etichette
+participant "tg:TestGoblin" as tg
+participant "ga:GoblinAdapter" as ga
+
+-> tg: main
+activate tg
+
+tg -> ga: tiraFreccia(danno)
+activate ga
+
+ga -> ga: scagliaPezzoDiLegno(danno * 10)
+activate ga
+
+ga --> ga
+deactivate ga
+
+ga --> tg
+deactivate ga
+
+deactivate tg
+
+@enduml
