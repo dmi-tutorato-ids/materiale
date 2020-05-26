@@ -1,8 +1,8 @@
 # Adapter: un Goblin per un PelleVerde
 
-Abbiamo una classe *PelleVerde* che espone un metodo la cui firma e range di valori ammessi differiscono da quelli attesi dal client secondo l'interfaccia *Goblin*.
+Abbiamo una classe *PelleVerde* che espone un metodo con firma e range di valori ammessi diversi da quelli attesi dal client, il quale usa invece l'interfaccia *Goblin*.
 
-Vogliamo inoltre aggiungere una la validazione dell'input, non precedentemente prevista in *PelleVerde*.
+Vogliamo adattare la classe *PelleVerde* all'interfaccia *Goblin*, aggiungendo inoltre la validazione dell'input, non precedentemente prevista in *PelleVerde*.
 
 ## Variante Object Adapter
 
