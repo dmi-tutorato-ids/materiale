@@ -22,7 +22,7 @@ Dungeon Vulcano:
 
 - *Normale*: Goblin
 - *Elite*: Orco
-- *Boss*: Goblin
+- *Boss*: Drago
 
 Ogni nemico regisce in maniera diversa ai danni:
 
