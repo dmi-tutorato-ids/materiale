@@ -1,0 +1,60 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+title Facade: esempio Battle Royale
+
+' Aggiungo delle etichette
+participant "c:Client" as c
+participant "br:BattleRoyale" as br
+participant "gr:GiocatoriRegistrati" as gr
+
+participant "cb:CheatBuster" as cb
+
+participant "s:Server" as s
+
+'participant "g:Giocatore" as g
+activate c
+
+c -> br: registra(giocatore)
+activate br
+
+br -> gr: registra(giocatore)
+activate gr
+deactivate gr
+deactivate br
+
+c -> br: partecipa(giocatore)
+activate br
+
+br -> gr: isRegistrato(giocatore)
+activate gr
+gr --> br: true
+deactivate gr
+
+br -> cb: isCheater(giocatore)
+activate cb
+cb --> br: false
+deactivate cb
+
+br -> s: isPieno()
+activate s
+s --> br: false
+deactivate s
+
+br -> s: addGiocatore(giocatore)
+activate s
+'s --> br
+deactivate s
+
+@enduml

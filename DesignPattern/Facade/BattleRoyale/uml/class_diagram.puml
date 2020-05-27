@@ -1,0 +1,58 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+title Facade: esempio Battle Royale
+
+class Client
+hide Client members
+
+class Giocatore {
+	+ getID(): int
+	+ getEquip(): String
+}
+
+Client -up-> Giocatore
+'BattleRoyale -up-> Giocatore
+
+class BattleRoyale {
+	+ partecipa(g: Giocatore)
+	+ registra(g: Giocatore)
+}
+
+class Server {
+	+ isPieno(): boolean
+	+ addGiocatore(g: Giocatore): void
+}
+
+class GiocatoriRegistrati {
+	+ isRegistrato(g: Giocatore): boolean
+	+ registra(g: Giocatore): void
+}
+
+class CheatBuster {
+	+ isCheater(g: Giocatore): boolean
+}
+
+Client -right-> BattleRoyale
+
+BattleRoyale -right-> CheatBuster
+BattleRoyale -right-> GiocatoriRegistrati
+BattleRoyale -right-> Server
+
+' per migliorare il posizionamento nel diagramma
+GiocatoriRegistrati -[hidden]-> CheatBuster
+Server -[hidden]up-> GiocatoriRegistrati
+
+
+@enduml
