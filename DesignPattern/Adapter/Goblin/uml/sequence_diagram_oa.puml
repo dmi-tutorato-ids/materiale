@@ -17,6 +17,7 @@ title Adapter: variante Object Adapter
 ' Aggiungo delle etichette
 participant "tg:TestGoblin" as tg
 participant "ga:GoblinAdapter" as ga
+participant "pv:PelleVerde" as pv
 
 -> tg: main
 activate tg
@@ -24,11 +25,15 @@ activate tg
 tg -> ga: tiraFreccia(danno)
 activate ga
 
-ga -> ga: scagliaPezzoDiLegno(danno * 10)
-activate ga
+opt pv == null
+	ga -> pv ** : create
+end
 
-ga --> ga
-deactivate ga
+ga -> pv: scagliaPezzoDiLegno(danno * 10)
+activate pv
+
+pv --> ga
+deactivate pv
 
 ga --> tg
 deactivate ga
