@@ -1,0 +1,44 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+
+' Aggiungo delle etichette
+participant "av:AssistenteVocale" as av
+participant "salotto:SmartLight" as salotto
+participant "ingresso:SmartLight" as ingresso
+
+
+-> av: registra(comando)
+activate av
+
+av -> av: notifyObservers(comando)
+activate av
+
+av -> salotto: update(comando)
+activate salotto
+	salotto -> salotto: elaboraComando(comando)
+salotto --> av
+deactivate salotto
+
+av -> ingresso: update(comando)
+activate ingresso
+	ingresso -> ingresso: elaboraComando(comando)
+ingresso --> av
+deactivate ingresso
+av --> av
+deactivate av
+
+av -[hidden]-> av
+deactivate av
+@enduml

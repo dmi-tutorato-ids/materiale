@@ -1,0 +1,51 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+
+class Subject {
+	+ attach(o: Observer)
+	+ detach(o: Observer)
+	+ notifyObservers()
+}
+
+class AssistenteVocale extends Subject {
+	- storicoComandi: ComandoVocale[0..*]
+	+ registra(c: ComandoVocale)
+	+ getUltimoComando(): ComandoVocale
+}
+
+interface Observer {
+	+ update()
+}
+
+class SmartLight implements Observer {
+	+ update()
+	- elaboraComando(c: ComandoVocale)
+	- accendi()
+	- spegni()
+}
+
+Subject -right-> "*" Observer
+SmartLight -left-> AssistenteVocale
+
+note right of SmartLight::update()
+	elaboraComando(av.getUltimoComando());
+end note
+
+note left of AssistenteVocale::registra
+	storicoComandi.add(c);
+	notifyObservers();
+end note
+
+@enduml
