@@ -1,0 +1,68 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+}
+hide circle
+' END STYLE
+
+interface Publisher
+hide Publisher members
+
+class SubmissionPublisher<ComandoVocale> implements Publisher
+hide SubmissionPublisher members
+
+class AssistenteVocale {
+	- storicoComandi: ComandoVocale[0..*]
+	+ attach(s: Subscriber<ComandoVocale>)
+	+ registra(c: ComandoVocale)
+}
+
+AssistenteVocale "publ" -up-> SubmissionPublisher
+Publisher -right-> Subscriber
+
+interface Subscriber<ComandoVocale> {
+	+ onSubscribe(s: Subscription)
+	+ onNext(c: ComandoVocale)
+	+ onError(t: Throwable)
+	+ onComplete()
+}
+
+class SmartLight implements Subscriber {
+	- sub: Subscription
+	+ onSubscribe(s: Subscription)
+	+ onNext(c: ComandoVocale)
+	+ onError(t: Throwable)
+	+ onComplete()
+	- elaboraComando(c: ComandoVocale)
+	- accendi()
+	- spegni()
+}
+
+note right of SmartLight::onSubscribe
+	this.sub = s;
+	sub.request(1);
+end note
+
+note right of SmartLight::onNext
+	elaboraComando(c);
+	sub.request(1);
+end note
+
+note left of AssistenteVocale::attach
+	publ.subscribe(s);
+end note
+
+note left of AssistenteVocale::registra
+	storicoComandi.add(c);
+	publ.submit(c);
+end note
+
+AssistenteVocale -[hidden]right-> SmartLight
+@enduml
