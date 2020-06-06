@@ -11,12 +11,15 @@ public class Main {
 
 		av.registra(new ComandoVocale("accendi luci"));
 		attendi(1);  // submit() chiama onNext() in thread separati
-		
+		System.out.println();
+
 		av.registra(new ComandoVocale("spegni luci salone"));
 		attendi(1);
+		System.out.println();
 		
 		av.registra(new ComandoVocale("spegni luci"));
 		attendi(1);
+		System.out.println();
 
 		av.close();
 		attendi(1);
