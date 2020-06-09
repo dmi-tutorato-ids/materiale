@@ -1,10 +1,10 @@
 package org.ids.postmediator;
 
-/** abbiamo due problemi:
- *  - ogni device deve conoscere gli altri due
- *  - la logica di accensione/spegnimento degli altri device è sparsa tra più classi
- *    - comportamento globale difficile da comprendere
- *    - comportamento globale difficile da modificare
+/** abbiamo risolto due problemi:
+ *  - ogni device conosce solo il Mediator (il mediator conosce tutti)
+ *  - la logica di accensione/spegnimento è ora nel mediator
+ *    - ogni colleague incarica il mediator di avvisare gli altri colleague
+ *    - comportamento globale è più facile da modificare
  */
 public class Client {
     public static void main( String[] args ) {
