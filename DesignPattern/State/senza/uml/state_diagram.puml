@@ -1,0 +1,24 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+left to right direction
+
+[*] --> Carico
+Carico -right-> Scarico: spara
+Scarico --> Inceppato: spara
+Inceppato --> Scarico: ripara
+Scarico --> Carico: ricarica
+
+@enduml

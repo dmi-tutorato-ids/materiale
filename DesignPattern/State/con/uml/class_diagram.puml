@@ -1,0 +1,65 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+interface Stato <<interface>> {
+	+ spara(): Stato
+	+ ricarica(): Stato
+	+ ripara(): Stato
+}
+
+class Carico implements Stato {
+	+ spara()
+	+ ricarica()
+	+ ripara()
+}
+
+class Scarico implements Stato {
+	+ spara()
+	+ ricarica()
+	+ ripara()
+}
+
+class Inceppato implements Stato {
+	+ spara()
+	+ ricarica()
+	+ ripara()
+}
+
+class Archibugio {
+	+ spara(): void
+	+ ricarica(): void
+	+ ripara(): void
+}
+
+hide Client members
+
+Client -right-> Archibugio
+
+note right of Archibugio::spara()
+	s = s.spara();
+end note
+
+note left of Carico::spara()
+	println("fuoco!");
+	return new Scarico();
+end note
+
+Carico -[hidden]right-> Scarico
+Scarico -[hidden]right-> Inceppato
+
+Archibugio "s" --> Stato
+
+@enduml

@@ -1,0 +1,44 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+class Archibugio {
+	- stato: enum
+	+ spara(): void
+	+ ricarica(): void
+	+ ripara(): void
+}
+
+hide Client members
+
+Client -right-> Archibugio
+
+note right of Archibugio::spara()
+	switch (stato) {
+	case CARICO:
+		println("fuoco!");
+		stato = SCARICO;
+		break;
+	case SCARICO:
+		println("si è inceppato!");
+		stato = INCEPPATO;
+		break;
+	case INCEPPATO:
+		println("è inceppato!");
+		break;
+	}
+end note
+
+@enduml
