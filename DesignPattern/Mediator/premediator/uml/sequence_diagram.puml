@@ -1,0 +1,57 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+
+' Aggiungo delle etichette
+participant "gs:GameStation" as gs
+participant "cc:CronCast" as cc
+participant "tv:SmartTv" as tv
+
+-> gs: turnOn()
+activate gs
+	gs -> cc: turnOff()
+	activate cc
+	gs <-- cc
+	deactivate cc
+	
+	gs -> tv: turnOn()
+	activate tv
+	gs <-- tv
+	deactivate tv
+gs -[hidden]-> gs
+deactivate gs
+
+@enduml
+
+' completo
+
+-> cc: turnOn()
+activate cc
+	cc -> gs: turnOff()
+	activate gs
+	deactivate gs
+	cc -> tv: turnOn()
+	activate tv
+	deactivate tv
+deactivate cc
+
+-> tv: turnOff()
+activate tv
+	tv -> gs: turnOff()
+	activate gs
+	deactivate gs
+	tv -> cc: turnOff()
+	activate cc
+	deactivate cc
+deactivate tv

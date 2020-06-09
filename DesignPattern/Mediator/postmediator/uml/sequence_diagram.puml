@@ -1,0 +1,90 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+
+' Aggiungo delle etichette
+participant "gs:GameStation" as gs
+participant "m:Mediator" as m
+participant "cc:CronCast" as cc
+participant "tv:SmartTv" as tv
+
+-> gs: turnOn()
+activate gs
+	gs -> m: gsTurnedOn()
+	activate m
+		m -> cc: turnOff()
+		activate cc
+			cc -> m: ccTurnedOff()
+			cc <-- m
+		m <-- cc
+		deactivate cc
+
+		m -> tv: turnOn()
+		activate tv
+			tv -> m: tvTurnedOn()
+			tv <-- m
+		m <-- tv
+		deactivate tv
+	gs <-- m
+	deactivate m
+gs -[hidden]-> gs
+deactivate gs
+
+@enduml
+
+' completo
+-> cc: turnOn()
+activate cc
+	cc -> m: ccTurnedOn()
+	activate m
+		m -> gs: turnOff()
+		activate gs
+			gs -> m: gsTurnedOff()
+			gs <-- m
+		m <-- gs
+		deactivate gs
+
+		m -> tv: turnOn()
+		activate tv
+			tv -> m: tvTurnedOn()
+			tv <-- m
+		m <-- tv
+		deactivate tv
+	cc <-- m
+	deactivate m
+'cc -[hidden]-> cc
+deactivate cc
+
+-> tv: turnOff()
+activate tv
+	tv -> m: tvTurnedOff()
+	activate m
+		m -> gs: turnOff()
+		activate gs
+			gs -> m: gsTurnedOff()
+			gs <-- m
+		m <-- gs
+		deactivate gs
+		
+
+		m -> cc: turnOff()
+		activate cc
+			cc -> m: tvTurnedOff()
+			cc <-- m
+		m <-- cc
+		deactivate cc
+	tv <-- m
+	deactivate m
+'tv -[hidden]->tv
+deactivate tv

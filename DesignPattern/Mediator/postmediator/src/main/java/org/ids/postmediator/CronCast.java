@@ -1,5 +1,6 @@
 package org.ids.postmediator;
 
+// ConcreteColleague
 public class CronCast implements Device {
 	Mediator m;
 	boolean isOn = false;

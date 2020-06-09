@@ -1,0 +1,79 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	linetype ortho
+}
+hide circle
+' END STYLE
+
+
+interface Device {
+	+ turnOn()
+	+ turnOff()
+	+ isOn(): boolean
+}
+
+interface IMediator {
+	'+ setSmartTv(tv: Device)
+	'+ setGameStation(gs: Device)
+	'+ setCronCast(cc: Device)
+	+ gsTurnedOn()
+	+ gsTurnedOff()
+	+ ccTurnedOn()
+	+ ccTurnedOff()
+	+ tvTurnedOn()
+	+ tvTurnedOff()
+}
+
+class Mediator implements IMediator
+hide Mediator members
+
+Device -> IMediator
+
+class SmartTv implements Device {
+	- isOn: boolean
+	+ turnOn()
+	+ turnOff()
+}
+
+'note left of SmartTv::turnOff()
+'	isOn = false;
+'	m.tvTurnedOff();
+'end note
+
+class GameStation implements Device {
+	- isOn: boolean
+	+ turnOn()
+	+ turnOff()
+}
+
+'note left of GameStation::turnOn()
+'	isOn = true;
+'	m.gsTurnedOn();
+'end note
+
+class CronCast implements Device {
+	- isOn: boolean
+	+ turnOn()
+	+ turnOff()
+}
+
+'note left of CronCast::turnOn()
+'	isOn = true;
+'	cc.turnedOn();
+'end note
+
+Mediator -left-> SmartTv
+Mediator -left-> CronCast
+Mediator -left-> GameStation
+
+GameStation -[hidden]right-> CronCast
+
+@enduml
