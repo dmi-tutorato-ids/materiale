@@ -1,0 +1,61 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+class Dispensa {
+	- tabellaCalorie
+	+ getIngrediente(nome: String, qt: int): Pietanza
+	+ getPreparato(nome: String): Pietanza
+}
+
+Dispensa --> Ingrediente
+Dispensa --> Preparato
+
+Client -down-> Dispensa
+Client -right-> Pietanza
+hide Client members
+
+
+abstract class Pietanza {
+	+ add(p: Pietanza): Pietanza
+	+ remove(p: Pietanza): Pietanza
+	+ {abstract} mostra(indent: String)
+	+ {abstract} calorie(indent: String): int
+}
+
+note right of Pietanza::add
+	return this;
+end note
+
+note right of Pietanza::remove
+	return this;
+end note
+
+class Ingrediente extends Pietanza {
+	+ mostra(indent: String)
+	+ calorie(indent: String): int
+}
+
+class Preparato extends Pietanza {
+	- pList: Pietanza[0..*]
+	+ add(p: Pietanza)
+	+ remove(p: Pietanza)
+	+ mostra(indent: String)
+	+ calorie(indent: String): int
+}
+
+Pietanza "\t*" <-left- Preparato
+Preparato -[hidden]left-> Ingrediente
+
+@enduml
