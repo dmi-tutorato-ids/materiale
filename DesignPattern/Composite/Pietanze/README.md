@@ -1,4 +1,4 @@
-# Composite: Pietanza
+# Composite: Pietanze
 
 Vogliamo realizzare un sistema per definire delle pietanze come composizione di ingredienti base (olio, farina, funghi...) e preparati (salsa, polpette, ragù...), dove un preparato può essere a sua volta composto da altri preparati o ingredienti.
 
