@@ -1,0 +1,74 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+VaultShop --> Elemento
+VaultShop --> Progetto
+
+Client -down-> VaultShop
+Client -right-> Prodotto
+hide Client members
+hide VaultShop members
+
+abstract class Prodotto <<abstract>> {
+	- nome
+	+ getNome()
+	+ add(p: Prodotto): Prodotto
+	+ remove(p: Prodotto): Prodotto
+	+ show()
+	# {abstract} show(tabs: String)
+	+ {abstract} getValore(): int
+}
+
+note right of Prodotto::add
+	return this;
+end note
+
+note right of Prodotto::remove
+	return this;
+end note
+
+note right of Prodotto::show
+	show("");
+end note
+
+
+note right of Progetto::show
+	println(tabs + nome);
+	pList.forEach(p -> p.show(tabs + "\t"));
+end note
+
+note left of Elemento::show
+	println("%s- %s: %d", 
+		tabs, nome, valore);
+end note
+
+class Elemento extends Prodotto {
+	- valore: int
+	# show(tabs: String)
+	+ getValore(): int
+}
+
+class Progetto extends Prodotto {
+	- pList: Prodotto[0..*]
+	+ add(p: Prodotto): Prodotto
+	+ remove(p: Prodotto): Prodotto
+	# show(tabs: String)
+	+ getValore(): int
+}
+
+Prodotto "\t*" <-left- Progetto
+Progetto -[hidden]left-> Elemento
+
+@enduml
