@@ -4,12 +4,12 @@ public class Client {
 		Prodotto p2 = VaultShop.getBuggyScontata();
 
 		p1.show();
-		System.out.println("Valore Totale: " + p1.getValore());
+		System.out.println("Valore Totale: " + p1.getValore() + " tappi");
 		
 		System.out.println();
 
 		p2.show();
-		System.out.println("Valore Totale: " + p2.getValore());
+		System.out.println("Valore Totale: " + p2.getValore() + " tappi");
 	}
 	
 }
