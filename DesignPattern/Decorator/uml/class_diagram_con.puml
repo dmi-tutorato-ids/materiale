@@ -1,0 +1,65 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+interface Spada <<interface>> {
+	+ getNome(): String
+	+ getDanno(): int
+	+ getEffetti(): List<String>
+}
+
+class SpadaBase implements Spada {
+	+ getNome(): String
+	+ getDanno(): int
+	+ getEffetti(): List<String>
+}
+
+class Incantesimo implements Spada {
+	- component: Spada
+	+ getNome(): String
+	+ getDanno(): int
+	+ getEffetti(): List<String>
+}
+
+class Infuocata extends Incantesimo {
+	+ getNome(): String
+	+ getDanno(): int
+	+ getEffetti(): List<String>
+}
+
+class Spettrale extends Incantesimo {
+	+ getNome(): String
+	+ getEffetti(): List<String>
+}
+
+class Pesante extends Incantesimo {
+	+ getNome(): String
+	+ getDanno(): int
+}
+
+hide Client members
+
+Client -right-> Spada
+Incantesimo -down-> Spada
+
+note right of Incantesimo::getDanno()
+	return component.getDanno();
+end note
+
+note left of Infuocata::getDanno()
+	return super.getDanno() * 2;
+end note
+
+@enduml

@@ -1,0 +1,36 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	linetype ortho
+}
+hide circle
+' END STYLE
+
+interface Spada <<interface>> {
+	+ getNome(): String
+	+ getDanno(): int
+	+ getEffetti(): List<String>
+}
+
+hide members
+
+class SpadaBase implements Spada
+class SpadaInfuocata implements Spada
+class SpadaPesante implements Spada
+class SpadaSpettrale implements Spada
+class SpadaSpettraleInfuocata implements Spada
+class SpadaInfuocataPesante implements Spada
+class SpadaPesanteInfuocata implements Spada
+class SpadaPesantePesante implements Spada
+
+hide Client members
+Client -down-> Spada
+
+@enduml
