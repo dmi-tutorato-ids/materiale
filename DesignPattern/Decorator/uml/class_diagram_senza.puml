@@ -28,7 +28,7 @@ class SpadaSpettrale implements Spada
 class SpadaSpettraleInfuocata implements Spada
 class SpadaInfuocataPesante implements Spada
 class SpadaPesanteInfuocata implements Spada
-class SpadaPesantePesante implements Spada
+class SpadaMoltoPesante implements Spada
 
 hide Client members
 Client -down-> Spada
