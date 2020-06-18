@@ -16,7 +16,7 @@ hide circle
 
 class HelpDesk {
 	- sucessor: HelpDesk
-	+ sendTicket(ticker: String)
+	+ sendTicket(ticket: String)
 }
 
 class HDLivello1 extends HelpDesk {
