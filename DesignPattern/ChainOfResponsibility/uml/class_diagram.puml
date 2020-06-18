@@ -1,0 +1,49 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+class HelpDesk {
+	- sucessor: HelpDesk
+	+ sendTicket(ticker: String)
+}
+
+class HDLivello1 extends HelpDesk {
+	+ sendTicket(ticker: String)
+}
+
+class HDLivello2 extends HelpDesk {
+	+ sendTicket(ticker: String)
+}
+
+class HDLivello3 extends HelpDesk {
+	+ sendTicket(ticker: String)
+}
+
+hide Client members
+
+Client -right-> HelpDesk
+
+note right of HelpDesk::sendTicket
+	if (successor != null) { 
+		successor.sendTicket(ticket); 
+end note
+
+note right of HDLivello1::sendTicket
+	if (puoiGestire) gestisci(ticket)
+	else super.sendTicket(ticket);
+end note
+
+HelpDesk --> HelpDesk
+@enduml
