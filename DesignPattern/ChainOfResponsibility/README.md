@@ -7,3 +7,7 @@ Vogliamo implementare un sistema di help desk per un magazzino della multinazion
 - livello 3 (premium): risolve problemi legati al funzionamento dei robot;
 
 Ogni ticket viene prima inviato al livello 1, per poi passare (se compreso nel piano) all'hd del livello successivo nel caso in cui il ticket non sia stato ancora risolto.
+
+# Soluzione
+
+![Diagramma delle Classi](uml/class_diagram.png)
