@@ -20,15 +20,15 @@ class HelpDesk {
 }
 
 class HDLivello1 extends HelpDesk {
-	+ sendTicket(ticker: String)
+	+ sendTicket(ticket: String)
 }
 
 class HDLivello2 extends HelpDesk {
-	+ sendTicket(ticker: String)
+	+ sendTicket(ticket: String)
 }
 
 class HDLivello3 extends HelpDesk {
-	+ sendTicket(ticker: String)
+	+ sendTicket(ticket: String)
 }
 
 hide Client members
