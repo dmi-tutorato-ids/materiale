@@ -1,0 +1,71 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+hide Client members
+Client -down-> Shape
+
+class Shape <<abstract>> {
+	# drawLine()
+	# drawCircle()
+	+ {abstract} draw() 
+}
+
+interface Drawing <<interface>> {
+	+ drawLine()
+	+ drawCircle()
+}
+
+note left of Shape::drawLine
+	impl.drawLine();
+end note
+
+note left of Shape::drawCircle
+	impl.drawCircle();
+end note
+
+Shape "impl" -right-> Drawing
+
+class Rectangle extends Shape {
+	+ draw()
+}
+
+class Circle extends Shape {
+	+ draw()
+}
+
+class P1Drawing implements Drawing {
+	+ drawLine()
+	+ drawCircle()
+}
+
+class P2Drawing implements Drawing {
+	+ drawLine()
+	+ drawCircle()
+}
+
+class P3Drawing <<new platform>> implements Drawing {
+	+ drawLine()
+	+ drawCircle()
+}
+
+note as n1 
+	Aggiungere una piattaforma implica 
+	l'aggiunta di una sola sottclasse.
+
+	Ugualmente per l'aggiunta di una forma.
+end note
+
+@enduml

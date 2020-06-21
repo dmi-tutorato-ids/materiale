@@ -1,0 +1,91 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	linetype ortho
+}
+hide circle
+' END STYLE
+
+
+hide Client members
+Client -down-> Shape
+
+class Shape <<abstract>> {
+	# drawLine()
+	# drawCircle()
+	+ {abstract} draw() 
+}
+
+interface Drawing <<interface>> {
+	+ drawLine()
+	+ drawCircle()
+}
+
+note left of Shape::drawLine
+	impl.drawLine();
+end note
+
+note left of Shape::drawCircle
+	impl.drawCircle();
+end note
+
+Shape "impl" -right-> Drawing
+
+class Rectangle extends Shape {
+	+ draw()
+}
+
+class Circle extends Shape {
+	+ draw()
+}
+
+class P1Drawing implements Drawing {
+	+ drawLine()
+	+ drawCircle()
+}
+
+class P2Drawing implements Drawing {
+	+ drawLine()
+	+ drawCircle()
+}
+
+note left of Rectangle::draw
+	drawLine(); 
+	drawLine();
+	drawLine(); 
+	drawLine();
+end note
+
+note left of Circle::draw
+	drawCircle();
+end note
+
+note right of P1Drawing::drawLine
+	draw line using P1 APIs
+end note
+
+note right of P1Drawing::drawCircle
+	draw circle using P1 APIs
+end note
+
+note right of P2Drawing::drawLine
+	draw line using P2 APIs
+end note
+
+note right of P2Drawing::drawCircle
+	draw circle using P2 APIs
+end note
+
+note as n1 
+	Shape funge da "ponte" verso
+	la gerarchia di Drawing
+end note
+
+@enduml

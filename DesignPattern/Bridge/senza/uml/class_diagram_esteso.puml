@@ -1,0 +1,69 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+hide Client members
+Client -> Shape
+
+interface Shape <<interface>> {
+	+ draw()
+}
+
+class Rectangle <<abstract>> implements Shape {
+	# {abstract} drawLine()
+	+ draw()
+}
+
+
+class Circle <<abstract>> implements Shape {
+	# {abstract} drawCircle()
+	+ draw()
+}
+
+class P1Rectangle extends Rectangle {
+	# drawLine()
+}
+
+class P2Rectangle extends Rectangle {
+	# drawLine()
+}
+
+class P3Rectangle <<new platform>> extends Rectangle {
+	# drawLine()
+}
+
+class P1Circle extends Circle {
+	# drawCircle()
+}
+
+class P2Circle extends Circle {
+	# drawCircle()
+}
+
+class P3Circle <<new platform>> extends Circle {
+	# drawCircle()
+}
+
+note as n1 
+	Se volessimo supportare una terza
+	piattaforma P3 dovremmo aggiungere
+	una sottoclasse per ogni forma.
+	
+	Analogamente, se volessimo aggiungere 
+	una terza forma dovremmo aggiungere 
+	una sottoclasse per ogni piattaforma.
+end note
+
+@enduml

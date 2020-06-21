@@ -1,0 +1,83 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+hide Client members
+Client -> Shape
+
+interface Shape <<interface>> {
+	+ draw()
+}
+
+class Rectangle <<abstract>> implements Shape {
+	+ draw()
+	# {abstract} drawLine()
+}
+
+
+class Circle <<abstract>> implements Shape {
+	+ draw()
+	# {abstract} drawCircle()
+	
+}
+
+class P1Rectangle extends Rectangle {
+	# drawLine()
+}
+
+class P2Rectangle extends Rectangle {
+	# drawLine()
+}
+
+class P1Circle extends Circle {
+	# drawCircle()
+}
+
+class P2Circle extends Circle {
+	# drawCircle()
+}
+
+note left of Rectangle::draw
+	drawLine(); 
+	drawLine();
+	drawLine(); 
+	drawLine();
+end note
+
+note right of Circle::draw
+	drawCircle();
+end note
+
+note left of P1Circle::drawCircle
+	draw circle using P1 APIs
+end note
+
+note right of P2Circle::drawCircle
+	draw circle using P2 APIs
+end note
+
+note left of P1Rectangle::drawLine
+	draw line using P1 APIs
+end note
+
+note right of P2Rectangle::drawLine
+	draw line using P2 APIs
+end note
+
+note as n1 
+	P1 e P2 sono due piattaforme che 
+	espongono API diverse per il disegno
+end note
+@enduml
