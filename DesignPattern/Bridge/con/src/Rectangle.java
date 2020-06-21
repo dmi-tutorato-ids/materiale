@@ -11,7 +11,7 @@ public class Rectangle extends Shape {
 	 */
 	@Override
 	public void draw() {
-		System.out.println("\nDraw a Rectangle with 4 lines:"); 
+		System.out.println("\nDraw a Rectangle:"); 
 		drawLine();
 		drawLine();
 		drawLine();

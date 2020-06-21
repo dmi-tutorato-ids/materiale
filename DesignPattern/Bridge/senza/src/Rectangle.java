@@ -3,7 +3,7 @@ public abstract class Rectangle implements Shape {
 	// Metodo definito dall'Astrazione
 	@Override
 	public void draw() {
-		System.out.println("\nDraw a Rectangle with 4 lines:"); 
+		System.out.println("\nDraw a Rectangle:"); 
 		drawLine();
 		drawLine();
 		drawLine();
