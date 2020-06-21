@@ -84,8 +84,16 @@ note right of P2Drawing::drawCircle
 end note
 
 note as n1 
+	Creo due gerarchie separate:
+	- una per le Astrazioni (Shape)
+	- una per le Implementazioni (Drawing)
+
 	Shape funge da "ponte" verso
-	la gerarchia di Drawing
+	la gerarchia di Drawing per le
+	sottoclassi della sua gerarchia.
+
+	I nomi dei metodi esposti da Shape
+	e Drawing possono non coincidere.
 end note
 
 @enduml
