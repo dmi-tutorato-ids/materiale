@@ -88,12 +88,13 @@ note as n1
 	- una per le Astrazioni (Shape)
 	- una per le Implementazioni (Drawing)
 
-	Shape funge da "ponte" verso
-	la gerarchia di Drawing per le
-	sottoclassi della sua gerarchia.
+	Shape funge da "ponte" verso la gerarchia di 
+	Drawing per le sottoclassi della sua gerarchia.
 
-	I nomi dei metodi esposti da Shape
-	e Drawing possono non coincidere.
+	I nomi dei metodi di Shape (Abstraction) possono
+	differire da quelli di Drawing (Implementor): di 
+	solito il primo definisce operazioni alto livello 
+	basate su operazioni primitive fornite dal secondo.
 end note
 
 @enduml
