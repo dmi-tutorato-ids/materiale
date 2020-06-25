@@ -1,6 +1,6 @@
 # Java 8 Streams: Libri
 
-Il codice di ogni esercizio è definito tramite un test *JUnit*, completo di asserzioni scritte con *AssertJ*, una libreria molto usata per scrivere asserzioni complesse con uno stile fluent.
+Nota: **il codice di ogni esercizio è definito tramite un test** *JUnit*, completo di asserzioni scritte con *AssertJ*, una libreria molto usata per scrivere asserzioni complesse con uno stile fluent.
 
 Il progetto *Maven* contiene:
 
