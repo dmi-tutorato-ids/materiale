@@ -1,6 +1,6 @@
 public class App {
 	public static void main(String[] args) {
-		// Assemble all the pieces of the MVC
+		// wiring all the MVC pieces
 		Model m = new Model(10);
 		
 		View v1 = new View("View 1");

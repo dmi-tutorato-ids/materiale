@@ -1,0 +1,59 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+
+interface Observer {
+	+ update()
+}
+
+class Subject {
+	+ attach()
+	+ detach()
+	+ notify()
+}
+
+class View implements Observer {
+	+ setError(msg:String)
+	+ setWarning(msg:String)
+	+ getIncValue():String
+	+ clearValue()
+	+ setAddEnabled(b:boolean)
+	+ display(value: int, max: int)
+	+ update()
+}
+
+class Controller implements Observer {
+	+ addButtonPressed()
+	+ resetButtonPressed()
+	+ update()
+}
+
+class Model extends Subject {
+	+ getValue(): int
+	+ getMax(): int
+	+ incCounter(x: int)
+	+ resetCounter()
+}
+
+Subject -right-> Observer
+Controller "call service" -right-> Model
+Controller "manipulate" -left-> View
+View "input" --> Controller
+View "get data" --> Model
+
+Model -[hidden]up-> Observer
+
+
+@enduml

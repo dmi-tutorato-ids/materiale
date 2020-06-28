@@ -67,27 +67,45 @@ public class View implements Observer {
 		resetButton.addActionListener(e -> controller.resetButtonPressed());
 	}
 
-	public JLabel getInfoLabel() {
-		return infoLabel;
+	public void setInfoMessage(String message) {
+		infoLabel.setForeground(Color.BLACK);
+		infoLabel.setText(message);
 	}
 
-	public JTextField getValueTextField() {
-		return valueTextField;
+	public void setWarningMessage(String message) {
+		infoLabel.setForeground(Color.MAGENTA);
+		infoLabel.setText(message);
 	}
 
-	public JButton getAddButton() {
-		return addButton;
+	public void setErrorMessage(String message) {
+		infoLabel.setForeground(Color.RED);
+		infoLabel.setText(message);
+	}
+
+	public String getValue() {
+		return valueTextField.getText();
+	}
+
+	public void clearValue() {
+		valueTextField.setText("");
+	}
+
+	public void setAddEnabled(boolean b) {
+		addButton.setEnabled(b);
+	}
+
+	public void display(int value, int max) {
+		countLabel.setText(value + "/" + max);
 	}
 
 	/**
-	 * View updates the label as soon as 
-	 * there's a change in the Model
+	 * View updates itself to reflect the Model state
 	 */
 	@Override
 	public void update() {
 		int value = model.getValue();
 		int max = model.getMax();
-		countLabel.setText(value + "/" + max);
+		display(value, max);
 	}
 
 }

@@ -1,5 +1,6 @@
-import javax.swing.*;
-import java.awt.*;
+// dovrebbe dipendere solo dalle API per gestire gli eventi
+//import javax.swing.*;
+//import java.awt.*;
 
 public class Controller implements Observer {
 	private Model model;
@@ -13,31 +14,24 @@ public class Controller implements Observer {
 	}
 
 	public void addButtonPressed() {
-		JTextField field = view.getValueTextField();
-		JLabel info = view.getInfoLabel();
-
 		try {
-			int inc = Integer.parseInt(field.getText());
+			int inc = Integer.parseInt(view.getValue());
 			
 			if (inc <= 0) {
-				info.setForeground(Color.RED);
-				info.setText("Value must be positive");
+				view.setErrorMessage("Value must be positive");
 				return;
 			}
 
 			boolean isOK = model.incCounter(inc);
 			if (isOK) {
-				field.setText("");
-				info.setForeground(Color.BLACK);
-				info.setText("");
+				view.clearValue();
+				view.setInfoMessage("");
 			} else {
-				info.setForeground(Color.MAGENTA);
-				info.setText("Value is to high");
+				view.setWarningMessage("Value is to high");
 			}
 
 		} catch (NumberFormatException ex) {
-			info.setForeground(Color.RED);
-			info.setText("Only numeric values are accepted");
+			view.setErrorMessage("Only numeric values are accepted");
 		}
 	}
 
@@ -48,17 +42,14 @@ public class Controller implements Observer {
 	/**
 	 * Controller disables the add button
 	 * as soon as the counter value inside Model
-	 * has reached the max value. This is something
-	 * related to the user input.
+	 * has reached the max value. The controller can
+	 * decide to disable some funzionalities
 	 */
 	@Override
 	public void update() {
-		JButton button = view.getAddButton();
 		if (model.getValue() >= model.getMax())
-			button.setEnabled(false);
+			view.setAddEnabled(false);
 		else
-			button.setEnabled(true);
-		
+			view.setAddEnabled(true);
 	}
-
 }

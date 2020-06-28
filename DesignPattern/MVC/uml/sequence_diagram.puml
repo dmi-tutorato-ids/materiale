@@ -1,0 +1,49 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+
+' Aggiungo delle etichette
+participant "c:Controller" as c
+participant "m:Model" as m
+participant "v:View" as v
+
+-> c: addButtonPressed()
+activate c
+	c -> v: getIncValue()
+	activate v
+	c <-- v
+	deactivate v
+
+	c -> m: incCounter()
+	activate m
+		m -> m: notify()
+		m -> v: update()
+		activate v
+			v -> m: getValue()
+			v -> m: getMax()
+			v -> v: display()
+		m <-- v
+		deactivate v
+		m -> c: update()
+		activate c
+			c -> m: getValue()
+			c -> m: getMax()
+		m <-- c
+		deactivate c
+	c <-- m
+	deactivate m
+c -[hidden]-> c
+deactivate c
+
+@enduml
