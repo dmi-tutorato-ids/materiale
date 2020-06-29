@@ -1,6 +1,6 @@
 # MVC: Contatore
 
-E’ considerato un pattern architetturale per le applicazioni interattive. Individua tre componenti: *Model* per funzionalità principali e dati; *View* per mostrare i dati; *Controller* per prendere gli input dell’utente
+E’ considerato un pattern architetturale per le applicazioni interattive. Individua tre componenti: *Model* per funzionalità principali e dati; *View* per mostrare i dati; *Controller* per prendere gli input dell’utente.
 
 ## Responsabilità
 
@@ -25,7 +25,7 @@ Controller:
 
 ## Implementazione
 
-Essenso un patter architetturale, MVC fornisce delle indicazioni generali sui ruoli dei componenti e sulle loro relazioni, ma lascia al programmatore il compito di prendere le scelte di design di più basso livello.
+Essendo un patter architetturale, MVC fornisce delle indicazioni generali sui ruoli dei componenti e sulle loro relazioni, ma lascia al programmatore il compito di prendere le scelte di design di più basso livello.
 
 Ad esempio, nell'MVC è importante notificare tempestivamente la View e, se necessario, il Controller sul cambiamento del Model. Per risolvere questo problema, può essere usato il design patter *Observer*.
 
@@ -35,7 +35,7 @@ L'interfaccia grafica potrebbe essere composta da più View elementari combinate
 
 Esiste una variante in cui Controller viene usato come *Mediator* tra la View e il Model: tutti gli aggiornamenti di stato vengono notificati solo al Controller, che si occuperà di innescare, quando necessario, l'aggiornamento della View.
 
-Nota: MVC è implementato da molti framework per la gestione di interfacce interattive. A seconda dell'ambiente (es. desktop, mobile o web) certe interazioni tra Model, View e Controller potrebbero essere implementate in maniera diversa.
+MVC è implementato da molti framework per la gestione di interfacce interattive. A seconda dell'ambiente (es. desktop, mobile o web) certe interazioni tra Model, View e Controller potrebbero essere implementate in maniera diversa.
 
 Inoltre il framework di visualizzazione usato potrebbe già aver preso scelte di design che possono facilitare o ostacolare l'implementazione di MVC.
 
@@ -55,10 +55,10 @@ Il Controller, può registrarsi, ad esempio, per abilitare o disabilitare alcune
 - Se il contatore ha già raggiunto il valore massimo, la funzionalità di incremento deve essere disabilitata.
 
 <p float="left">
-	<img src="img/screen1.png" width="100" />
-  	<img src="img/screen2.png" width="100" /> 
-  	<img src="img/screen3.png" width="100" />
-	<img src="img/screen4.png" width="100" />
+	<img src="img/screen4.png" width="200" />
+  	<img src="img/screen2.png" width="200" /> 
+  	<img src="img/screen1.png" width="200" />
+	<img src="img/screen3.png" width="200" />
 </p>
 
 ## Diagramma delle Classi
