@@ -1,4 +1,4 @@
-# MVC: Contatore
+# MVC
 
 E’ considerato un pattern architetturale per le applicazioni interattive. Individua tre componenti: *Model* per funzionalità principali e dati; *View* per mostrare i dati; *Controller* per prendere gli input dell’utente.
 
@@ -39,7 +39,7 @@ MVC è implementato da molti framework per la gestione di interfacce interattive
 
 Inoltre il framework di visualizzazione usato potrebbe già aver preso scelte di design che possono facilitare o ostacolare l'implementazione di MVC.
 
-## Esempio di implementazione
+## Esempio: Contatore
 
 In questa implementazione è stato usato il design pattern Observer per notificare sia la View che il Controller sui cambiamenti di stato nel Model.
 
@@ -47,7 +47,7 @@ La View viene notificata per poter aggiornare la visualizzazione dei dati.
 
 Il Controller, può registrarsi, ad esempio, per abilitare o disabilitare alcune funzionalità disponibili nella View.
 
-## Funzionalità
+### Funzionalità
 
 - La GUI è composta da due finestre identiche, ognuna delle quali deve visualizzare il valore attuale di un contatore e fornire le funzionalità di incremento e di reset del contatore. Il contatore ha un valore massimo.
 - L'utente può inserire solo valori numerici positivi; in caso di problemi con il formato dell'input, deve essere visualizzato un messaggio di errore.
