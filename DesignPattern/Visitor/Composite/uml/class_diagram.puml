@@ -8,7 +8,7 @@ skinparam {
 	classBackgroundColor white
 	noteBackgroundColor white
 	classAttributeIconSize 0
-	'linetype ortho
+	linetype ortho
 }
 hide circle
 ' END STYLE
@@ -29,6 +29,7 @@ class ConcreteElementB extends Element {
 }
 
 class CompositeElement extends Element {
+	- eList: Element
 	+ add(e: Element)
 	+ accept(v: Visitor)
 	+ operationC()
@@ -51,10 +52,14 @@ class ConcreteVisitor2 extends Visitor {
 
 hide Client members
 
-CompositeElement --> "*" Element
+'CompositeElement --> "*" Element
 Element <-down- Client
 Client -right-> Visitor
 
+note left of CompositeElement::accept 
+	v.visit(this);
+	eList.forEach(e.accept(v));
+end note
 
 
 @enduml
