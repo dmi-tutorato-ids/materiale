@@ -1,0 +1,60 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+class Element <<abstract>> {
+	+ add(e: Element)
+	+ {abstract} accept(v: Visitor)
+}
+
+class ConcreteElementA extends Element {
+	+ accept(v: Visitor)
+	+ operationA()
+}
+
+class ConcreteElementB extends Element {
+	+ accept(v: Visitor)
+	+ operationB()
+}
+
+class CompositeElement extends Element {
+	+ add(e: Element)
+	+ accept(v: Visitor)
+	+ operationC()
+}
+
+class Visitor <<abstract>> {
+	+ visit(e: ConcreteElementA)
+	+ visit(e: ConcreteElementB)
+	+ visit(e: CompositeElement)
+}
+
+class ConcreteVisitor1 extends Visitor {
+	+ visit(e: CompositeElement)
+	+ visit(e: ConcreteElementA)
+}
+
+class ConcreteVisitor2 extends Visitor {
+	+ visit(e: ConcreteElementB)
+}
+
+hide Client members
+
+CompositeElement --> "*" Element
+Element <-down- Client
+Client -right-> Visitor
+
+
+
+@enduml

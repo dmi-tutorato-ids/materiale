@@ -1,0 +1,63 @@
+' Documentazione: https://plantuml.com/class-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+	classBackgroundColor white
+	noteBackgroundColor white
+	classAttributeIconSize 0
+	'linetype ortho
+}
+hide circle
+' END STYLE
+
+interface Element <<interface>> {
+	+ accept(v: Visitor)
+}
+
+class ConcreteElementA implements Element {
+	+ accept(v: Visitor)
+	+ operationA()
+}
+
+class ConcreteElementB implements Element {
+	+ accept(v: Visitor)
+	+ operationB()
+}
+
+class Visitor <<abstract>> {
+	+ visit(e: ConcreteElementA)
+	+ visit(e: ConcreteElementB)
+}
+
+class ConcreteVisitor1 extends Visitor {
+	+ visit(e: ConcreteElementA)
+}
+
+class ConcreteVisitor2 extends Visitor {
+	+ visit(e: ConcreteElementB)
+}
+
+hide ObjectStructure members
+hide Client members
+
+ObjectStructure -right-> "*" Element
+ObjectStructure <-down- Client
+Client -right-> Visitor
+
+note right of ConcreteElementA::accept
+	v.visit(this)
+end note
+
+note right of Visitor::visit
+	do nothing
+end note
+
+note right of ConcreteVisitor1::visit
+	e.operationA()
+end note
+
+
+@enduml

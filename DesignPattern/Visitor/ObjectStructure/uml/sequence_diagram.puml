@@ -1,0 +1,51 @@
+' Documentazione: https://plantuml.com/sequence-diagram
+
+@startuml
+' START STYLE
+skinparam {
+	monochrome true
+	'shadowing false
+}
+skinparam sequence {
+	participantBackgroundColor white
+}
+hide footbox
+' END STYLE
+
+
+' Aggiungo delle etichette
+participant "s:ObjectStructure" as s
+participant "a:CroncreteElementA" as a
+participant "b:CroncreteElementB" as b
+participant "v1:ConcreteVisitor1" as v1
+
+activate s
+	s -> a: accept(v1)
+	activate a
+		a -> v1: visit(this)
+		activate v1
+			v1 -> a: operationA()
+			activate a
+			v1 <-- a
+			deactivate a
+		a <-- v1
+		deactivate v1
+	s <-- a
+	deactivate a
+	
+	s -> b: accept(v1)
+	activate b
+		b -> v1: visit(this)
+		activate v1
+			v1 -> b: operationB()
+			activate b
+			v1 <-- b: do nothig
+			deactivate b
+		b <-- v1
+		deactivate v1
+	s <-- b
+	deactivate b
+s <-[hidden]- s
+deactivate s
+
+@enduml
