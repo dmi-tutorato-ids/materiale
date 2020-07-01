@@ -62,9 +62,9 @@ end note
 note as N1 
 	Un ConcreteVisitor può scegliere di
 	implementare solo alcuni dei metodi visit()
-	lasciando per gli altri il comportamento di default,
-	che tipicamente equivale a non fare nulla, ignorando
-	l'elemento.
+	lasciando per gli altri il comportamento 
+	di default, che tipicamente equivale a 
+	non fare nulla, ignorando l'elemento.
 end note
 
 @enduml
