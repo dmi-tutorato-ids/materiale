@@ -58,7 +58,7 @@ Client -right-> Visitor
 
 note left of CompositeElement::accept 
 	v.visit(this);
-	eList.forEach(e.accept(v));
+	eList.forEach(e -> e.accept(v));
 end note
 
 
