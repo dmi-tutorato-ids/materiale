@@ -16,7 +16,7 @@ Questo è un semplice esempio per riepilogare:
 
 - usando un [editor online](https://www.planttext.com)
 
-- scaricando un'[estensione per vscode](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
+- scaricando un'[estensione per vscode](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) (ALT+D per la preview)
 
 Questo è un esempio di diagramma delle classi generato con PlantUML a partire dal file [*docs/uml/class_diagram.puml*](docs/uml/class_diagram.puml):
 
