@@ -37,11 +37,7 @@ activate s
 	activate b
 		b -> v1: visit(this)
 		activate v1
-			v1 -> b: operationB()
-			activate b
-			v1 <-- b: do nothig
-			deactivate b
-		b <-- v1
+		b <-- v1: do nothing
 		deactivate v1
 	s <-- b
 	deactivate b
